@@ -5,6 +5,7 @@ export default function TextForm(props) {
     console.log("Uppercase was clicked" + text);
     let newText = text.toUpperCase();
     setText(newText);
+    props.showAlert("Converted to Uppercase!", "success");
   };
 
   const handleFormatSentence = () => {
@@ -13,17 +14,20 @@ export default function TextForm(props) {
     let formatSentence = words.map(word => word.charAt(0).toUpperCase() + word.slice(1));
     let newText = formatSentence.join(' ');
     setText(newText);
+    props.showAlert("Formatted Sentence!", "success");
   };
 
   const handleClearClick = ()=>{ 
     let newText = '';
     setText(newText)
+    props.showAlert("Text Cleared!", "success");
 };
 
   const handleLoClick = () => {
     console.log("Lowercase was clicked" + text);
     let newText = text.toLowerCase();
     setText(newText);
+    props.showAlert("Converted to Lowercase!", "success");
   };
 
   const handleCopy = () => {
@@ -31,12 +35,14 @@ export default function TextForm(props) {
     var text = document.getElementById("floatingTextarea");
     text.select();
     navigator.clipboard.writeText(text.value);
+    props.showAlert("Copied to Clipboard!", "success");
   };
   
   const handlespaces = () => {
     console.log("Remove Extra Spaces was clicked" + text);
     let newText = text.split(/[ ]+/);
     setText(newText.join(" "));
+    props.showAlert("Removed Extra Spaces!", "success");
   };
 
   const handleOnChange = (event) => {
